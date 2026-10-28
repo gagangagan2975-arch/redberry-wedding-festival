@@ -232,9 +232,11 @@
           <span>Tell us about your event — we reply within 24 hours</span>
         </div>
         <div class="contactGrid">
-          <form class="card formCard" name="booking" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="booking" />
-            <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+          <form class="card formCard" name="booking" method="POST" action="https://formsubmit.co/gagangagan2975@gmail.com">
+            <input type="hidden" name="_subject" value="New REDBERRY booking request" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://gagangagan2975-arch.github.io/redberry-wedding-festival/public/thank-you.html" />
+            <input class="hidden" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="formRow">
               <label>Your name<input class="field" type="text" name="name" required placeholder="Full name" /></label>
               <label>Phone / WhatsApp<input class="field" type="tel" name="phone" required placeholder="+91 …" /></label>
