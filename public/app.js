@@ -9,6 +9,19 @@ document.querySelectorAll('[data-scroll]').forEach(b => b.addEventListener('clic
   if (!splash || !app) return;
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const momentum = document.getElementById('splashMomentum');
+  if (momentum && !reduce) {
+    splash.addEventListener('pointermove', event => {
+      const bounds = splash.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+      momentum.style.transform = `translate3d(${x * 8}px, ${y * 6}px, 0) rotateX(${-y * 9}deg) rotateY(${x * 12}deg)`;
+    }, { passive: true });
+    splash.addEventListener('pointerleave', () => {
+      momentum.style.transform = '';
+    });
+  }
+
   let finished = false;
   function revealApp(){
     if (finished) return;
