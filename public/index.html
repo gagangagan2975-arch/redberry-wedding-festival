@@ -14,8 +14,9 @@
   body.splash-loading{overflow:hidden}
   #splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--splash-bg);color:var(--splash-logo);text-align:center}
   #splash::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at center,rgba(255,255,255,.10),transparent 55%),conic-gradient(from 180deg,rgba(255,255,255,.18),transparent 25%,rgba(255,255,255,.10),transparent 70%);filter:blur(14px);opacity:.55;animation:glow 1.8s ease-in-out infinite alternate;pointer-events:none}
-  .splashContent{position:relative;z-index:1;width:min(720px,90vw);padding:24px 0}
-  #logo{display:block;width:min(520px,85vw);height:auto;margin:0 auto 20px;transform:translateY(20px) scale(.98);opacity:0;animation:splashIn 900ms cubic-bezier(.2,.9,.2,1) forwards;will-change:transform,opacity}
+  .splashContent{position:relative;z-index:1;width:min(720px,90vw);padding:24px 0;perspective:1000px}
+  .splashMomentum{width:min(520px,85vw);margin:0 auto 20px;transform-style:preserve-3d;will-change:transform;transition:transform 180ms ease-out}
+  #logo{display:block;width:100%;height:auto;margin:0 auto;transform:translateY(20px) scale(.98) translateZ(40px);opacity:0;animation:splashIn 900ms cubic-bezier(.2,.9,.2,1) forwards;will-change:transform,opacity;filter:drop-shadow(0 22px 45px rgba(30,0,0,.28))}
   .splashTagline{margin:0;color:#fff;font-size:clamp(10px,2.5vw,15px);font-weight:700;letter-spacing:.2em;text-transform:uppercase}
   .splashCredit{display:block;margin-top:12px;color:rgba(255,255,255,.86);font-size:clamp(9px,2vw,12px);font-weight:600;letter-spacing:.16em;text-transform:uppercase}
   #splash.hide{animation:splashOut 420ms ease-in forwards}
@@ -25,13 +26,15 @@
   @keyframes splashIn{0%{opacity:0;transform:translateY(24px) scale(.9);filter:blur(6px)}60%{opacity:1;transform:translateY(-6px) scale(1.03);filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1)}}
   @keyframes splashOut{from{opacity:1}to{opacity:0;transform:scale(1.02)}}
   @keyframes appReveal{from{opacity:0}to{opacity:1}}
-  @media(prefers-reduced-motion:reduce){#splash::before{animation:none}#logo{animation:none;opacity:1;transform:none}#splash.hide{animation-duration:150ms}}
+  @media(prefers-reduced-motion:reduce){#splash::before{animation:none}.splashMomentum{transition:none}#logo{animation:none;opacity:1;transform:none}#splash.hide{animation-duration:150ms}}
 </style>
 </head>
 <body class="splash-loading">
   <div id="splash">
     <div class="splashContent">
-      <img id="logo" src="images/redberry-logo.svg" alt="REDBERRY — Wedding and Grand Fest Shoot + Edit" />
+      <div class="splashMomentum" id="splashMomentum">
+        <img id="logo" src="images/redberry-logo.svg" alt="REDBERRY — Wedding and Grand Fest Shoot + Edit" />
+      </div>
       <p class="splashTagline">Wedding · Grand Fest · Shoot + Edit</p>
       <span class="splashCredit">Powered by Big Brothers Creation</span>
     </div>
