@@ -231,3 +231,47 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .grain, .mockPhoto .film{ animation:none; }
   html{ scroll-behavior:auto; }
 }
+
+/* Light berry theme */
+:root{
+  --bg0:#fff5f5; --bg1:#ffe5e7; --text:#451321; --muted:rgba(69,19,33,.72);
+  --red:#c51f43; --berry:#8f2140; --pink:#e94d70;
+  --card:rgba(255,255,255,.58); --stroke:rgba(120,25,49,.14);
+  --shadow:0 20px 80px rgba(112,20,43,.13); --shadow2:0 10px 35px rgba(197,31,67,.12);
+}
+body{
+  background:
+    radial-gradient(1100px 620px at 12% 8%,rgba(255,255,255,.8),transparent 58%),
+    radial-gradient(900px 540px at 88% 24%,rgba(245,112,134,.18),transparent 58%),
+    radial-gradient(900px 600px at 55% 92%,rgba(255,255,255,.64),transparent 60%),
+    linear-gradient(180deg,var(--bg0),var(--bg1));
+  background-attachment:fixed;
+}
+.grain{mix-blend-mode:multiply;opacity:.035}
+header{background:linear-gradient(180deg,rgba(255,245,245,.94),rgba(255,245,245,.76));border-bottom-color:rgba(120,25,49,.1)}
+nav a{color:rgba(69,19,33,.78)}
+nav a:hover{color:#451321;background:rgba(255,255,255,.62);box-shadow:inset 0 0 0 1px rgba(120,25,49,.10)}
+.brand span,.sub,.sectionTitle span,.stat small,.card p,.mockPhoto .caption p,.pkg ul,.formCard label,.infoCard ul,.footer,.smallLinks a{color:var(--muted)}
+.hero h2{text-shadow:0 10px 35px rgba(112,20,43,.12)}
+.kicker,.stat,.card,.stage,.mockPhoto,.field,.pkgTag,.stageLabel,.mockPhoto .badge,.mockPhoto .caption{
+  border-color:rgba(120,25,49,.13);background-color:rgba(255,255,255,.56);box-shadow:0 18px 60px rgba(112,20,43,.09)
+}
+.kicker{color:rgba(69,19,33,.82)}
+.stage{background:radial-gradient(900px 520px at 20% 10%,rgba(245,112,134,.22),transparent 55%),radial-gradient(900px 520px at 85% 35%,rgba(197,31,67,.12),transparent 60%),rgba(255,255,255,.48)}
+.glassFrame{border-color:rgba(120,25,49,.12);background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.12))}
+.stageLabel{background:rgba(255,255,255,.76);backdrop-filter:blur(10px)}
+.stageLabel p,.mockPhoto .badge,.mockPhoto .caption p{color:rgba(69,19,33,.74)}
+.mockPhoto{background:radial-gradient(800px 240px at 20% 10%,rgba(245,112,134,.18),transparent 55%),radial-gradient(650px 260px at 70% 60%,rgba(197,31,67,.12),transparent 60%),rgba(255,255,255,.5)}
+.mockPhoto .badge,.mockPhoto .caption{background:rgba(255,250,250,.82);backdrop-filter:blur(10px)}
+.pkg.featured{border-color:rgba(197,31,67,.36);box-shadow:0 25px 80px rgba(197,31,67,.14)}
+.field{background:rgba(255,255,255,.78);color:var(--text)}
+select.field option{background:#fff5f5;color:var(--text)}
+input[type=date].field{color-scheme:light}
+.field::placeholder{color:rgba(69,19,33,.44)}
+footer{color:var(--muted);border-top-color:rgba(120,25,49,.12)}
+.smallLinks a:hover{color:#8f1735}
+.note,.infoCard b{color:var(--text)}
+.btn{border-color:rgba(120,25,49,.16);background:rgba(255,255,255,.7);color:#68152b;box-shadow:0 10px 30px rgba(112,20,43,.08)}
+.btn:hover{border-color:rgba(120,25,49,.25);background:rgba(255,255,255,.94)}
+.btnPrimary,.btnPrimary:hover{color:#fff;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.34),transparent 40%),linear-gradient(135deg,#c51f43,#8f2140);box-shadow:0 18px 45px rgba(143,33,64,.2),inset 0 0 0 1px rgba(255,255,255,.2)}
+
