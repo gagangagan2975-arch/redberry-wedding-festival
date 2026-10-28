@@ -36,7 +36,7 @@ document.querySelectorAll('[data-scroll]').forEach(b => b.addEventListener('clic
   }
 
   splash.addEventListener('click', revealApp);
-  const startIntro = () => window.setTimeout(revealApp, 1600);
+  const startIntro = () => window.setTimeout(revealApp, 4000);
   if (document.readyState === 'complete') startIntro();
   else window.addEventListener('load', startIntro, { once: true });
 })();
