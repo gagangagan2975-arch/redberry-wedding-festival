@@ -10,14 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 <style>
-  :root{--splash-bg:#f2a3ae;--splash-logo:#7d1830}
+  :root{--splash-bg:#8b0000;--splash-logo:#fff}
   body.splash-loading{overflow:hidden}
-  #splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(1200px 600px at 50% 35%,#fff1f3 0%,var(--splash-bg) 58%,#e98998 100%);color:var(--splash-logo);text-align:center}
-  #splash::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at center,rgba(255,255,255,.34),transparent 55%),conic-gradient(from 180deg,rgba(255,255,255,.12),transparent 25%,rgba(255,255,255,.08),transparent 70%);filter:blur(14px);opacity:.55;animation:glow 1.8s ease-in-out infinite alternate;pointer-events:none}
+  #splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--splash-bg);color:var(--splash-logo);text-align:center}
+  #splash::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at center,rgba(255,255,255,.10),transparent 55%),conic-gradient(from 180deg,rgba(255,255,255,.18),transparent 25%,rgba(255,255,255,.10),transparent 70%);filter:blur(14px);opacity:.55;animation:glow 1.8s ease-in-out infinite alternate;pointer-events:none}
   .splashContent{position:relative;z-index:1;width:min(720px,90vw);padding:24px 0}
   #logo{display:block;width:min(520px,85vw);height:auto;margin:0 auto 20px;transform:translateY(20px) scale(.98);opacity:0;animation:splashIn 900ms cubic-bezier(.2,.9,.2,1) forwards;will-change:transform,opacity}
-  .splashTagline{margin:0;color:#7d1830;font-size:clamp(10px,2.5vw,15px);font-weight:700;letter-spacing:.2em;text-transform:uppercase}
-  .splashCredit{display:block;margin-top:12px;color:#8f2940;font-size:clamp(9px,2vw,12px);font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+  .splashTagline{margin:0;color:#fff;font-size:clamp(10px,2.5vw,15px);font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+  .splashCredit{display:block;margin-top:12px;color:rgba(255,255,255,.86);font-size:clamp(9px,2vw,12px);font-weight:600;letter-spacing:.16em;text-transform:uppercase}
   #splash.hide{animation:splashOut 420ms ease-in forwards}
   #app{visibility:hidden}
   #app.is-visible{visibility:visible;animation:appReveal .35s ease both}
