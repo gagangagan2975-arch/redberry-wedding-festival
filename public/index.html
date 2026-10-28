@@ -16,7 +16,8 @@
   .splashContent{position:relative;width:min(94vw,720px);padding:24px 0;animation:splashIn .8s cubic-bezier(.2,.8,.2,1) both;perspective:1000px}
   .splashLogoBadge{position:relative;display:grid;place-items:center;width:clamp(230px,64vw,360px);aspect-ratio:1;margin:0 auto 25px;padding:18px;border:1px solid rgba(255,255,255,.42);border-radius:50%;background:radial-gradient(circle at 32% 24%,#b3142e,#8f071d 72%,#760416);box-shadow:0 30px 70px rgba(135,13,38,.28),inset 0 8px 22px rgba(255,255,255,.12);transform-style:preserve-3d;animation:badgeFloat3d 3.4s ease-in-out infinite}
   .splashLogoBadge::before{content:"";position:absolute;inset:-11px;border:1px solid rgba(125,24,48,.32);border-radius:50%;transform:rotateX(72deg) rotateZ(-20deg);animation:logoOrbit 5.5s linear infinite;pointer-events:none}
-  .splashLogo{display:block;position:relative;z-index:1;width:100%;height:auto;max-height:54%;object-fit:contain;transform:translateZ(26px);filter:drop-shadow(0 7px 15px rgba(70,0,12,.3))}
+  .splashLogo{display:block;position:relative;z-index:1;width:100%;height:100%;max-height:none;border-radius:50%;object-fit:cover;transform:translateZ(26px);filter:drop-shadow(0 7px 15px rgba(70,0,12,.3))}
+  .splashBrand{margin:4px 0 10px;color:#7d1830;font-family:Georgia,serif;font-size:clamp(30px,7vw,48px);font-weight:700;letter-spacing:.13em}
   .splashTagline{margin:0;color:#7d1830;font-size:clamp(10px,2.5vw,15px);font-weight:700;letter-spacing:.2em;text-transform:uppercase}
   .splashCredit{display:block;margin-top:12px;color:#8f2940;font-size:clamp(9px,2vw,12px);font-weight:600;letter-spacing:.16em;text-transform:uppercase}
   @keyframes splashIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
@@ -30,8 +31,9 @@
   <div class="splash" role="presentation" aria-hidden="true">
     <div class="splashContent">
       <div class="splashLogoBadge">
-        <img class="splashLogo" src="images/redberry-logo.svg" alt="REDBERRY logo with its animal emblem" />
+        <img class="splashLogo" src="images/redberry-icon.svg" alt="REDBERRY animal emblem in a circle" />
       </div>
+      <h1 class="splashBrand">REDBERRY</h1>
       <p class="splashTagline">Wedding · Grand Fest · Shoot + Edit</p>
       <span class="splashCredit">Powered by Big Brothers Creation</span>
     </div>
