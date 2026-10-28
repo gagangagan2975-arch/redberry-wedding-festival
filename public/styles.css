@@ -208,6 +208,9 @@ textarea.field{ height:auto; padding:12px 14px; resize: vertical; }
 
 footer{ padding:34px 0 46px; color: rgba(244,244,255,.70); border-top: 1px solid rgba(255,255,255,.10); margin-top:22px; font-size:13px; }
 .footRow{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center; }
+.footerDetails{ display:grid; gap:5px; line-height:1.5; }
+.footerDetails strong{ color:rgba(255,255,255,.94); }
+.footerDetails .footerBrand{ font-size:16px; letter-spacing:.08em; }
 .smallLinks{ display:flex; gap:14px; flex-wrap:wrap; font-weight:900; font-size:12px; }
 .smallLinks a{ color: rgba(244,244,255,.70); text-decoration:none; }
 .smallLinks a:hover{ color:#fff; }
