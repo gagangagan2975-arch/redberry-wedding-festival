@@ -213,7 +213,7 @@ footer{ padding:34px 0 46px; color: rgba(244,244,255,.70); border-top: 1px solid
 .footerDetails .footerBrand{ font-size:16px; letter-spacing:.08em; }
 .builtBy{ display:flex; justify-content:center; align-items:center; gap:10px; padding:11px 16px; color:#775765; background:#f6e9ef; border-top:1px solid rgba(95,49,70,.12); font-size:11px; font-weight:500; letter-spacing:.24em; text-transform:uppercase; }
 .builtBy strong{ color:#684354; font-weight:700; }
-.builtByMark{ display:grid; place-items:center; width:34px; height:34px; border:1px solid rgba(104,67,84,.35); border-radius:50%; color:#684354; font-family:Georgia,serif; font-size:21px; font-weight:400; letter-spacing:0; }
+.builtByMark{ display:block; width:36px; height:36px; flex:none; }
 .smallLinks{ display:flex; gap:14px; flex-wrap:wrap; font-weight:900; font-size:12px; }
 .smallLinks a{ color: rgba(244,244,255,.70); text-decoration:none; }
 .smallLinks a:hover{ color:#fff; }
