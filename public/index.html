@@ -13,18 +13,24 @@
   .splash{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#fff0f2,#f8bdc6 62%,#ef9baa);color:#7d1830;text-align:center;animation:splashOut .7s ease 2.1s forwards}
   .splash::before,.splash::after{content:"";position:absolute;left:50%;width:min(360px,72vw);height:2px;background:linear-gradient(90deg,transparent,#a62d47,transparent);transform:translateX(-50%)}
   .splash::before{top:22%}.splash::after{bottom:22%}
-  .splashContent{position:relative;width:min(94vw,720px);padding:24px 0;animation:splashIn .8s cubic-bezier(.2,.8,.2,1) both}
-  .splashLogo{display:block;width:min(88vw,680px);max-height:55vh;object-fit:contain;margin:0 auto 18px;box-shadow:0 18px 48px rgba(125,24,48,.18)}
+  .splashContent{position:relative;width:min(94vw,720px);padding:24px 0;animation:splashIn .8s cubic-bezier(.2,.8,.2,1) both;perspective:1000px}
+  .splashLogoBadge{position:relative;display:grid;place-items:center;width:clamp(230px,64vw,360px);aspect-ratio:1;margin:0 auto 25px;padding:18px;border:1px solid rgba(255,255,255,.42);border-radius:50%;background:radial-gradient(circle at 32% 24%,#b3142e,#8f071d 72%,#760416);box-shadow:0 30px 70px rgba(135,13,38,.28),inset 0 8px 22px rgba(255,255,255,.12);transform-style:preserve-3d;animation:badgeFloat3d 3.4s ease-in-out infinite}
+  .splashLogoBadge::before{content:"";position:absolute;inset:-11px;border:1px solid rgba(125,24,48,.32);border-radius:50%;transform:rotateX(72deg) rotateZ(-20deg);animation:logoOrbit 5.5s linear infinite;pointer-events:none}
+  .splashLogo{display:block;position:relative;z-index:1;width:100%;height:auto;max-height:54%;object-fit:contain;transform:translateZ(26px);filter:drop-shadow(0 7px 15px rgba(70,0,12,.3))}
   .splashTagline{margin:0;color:#7d1830;font-size:clamp(10px,2.5vw,15px);font-weight:700;letter-spacing:.2em;text-transform:uppercase}
   @keyframes splashIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
   @keyframes splashOut{to{opacity:0;visibility:hidden}}
-  @media(prefers-reduced-motion:reduce){.splash{animation:splashOut .1s ease .5s forwards}.splashContent{animation:none}}
+  @keyframes badgeFloat3d{0%,100%{transform:rotateX(6deg) rotateY(-9deg) translateY(0)}50%{transform:rotateX(-6deg) rotateY(9deg) translateY(-6px)}}
+  @keyframes logoOrbit{from{transform:rotateX(72deg) rotateZ(0deg)}to{transform:rotateX(72deg) rotateZ(360deg)}}
+  @media(prefers-reduced-motion:reduce){.splash{animation:splashOut .1s ease .5s forwards}.splashContent,.splashLogoBadge,.splashLogoBadge::before{animation:none}}
 </style>
 </head>
 <body>
   <div class="splash" role="presentation" aria-hidden="true">
     <div class="splashContent">
-      <img class="splashLogo" src="images/redberry-logo.svg" alt="REDBERRY logo with its animal emblem" />
+      <div class="splashLogoBadge">
+        <img class="splashLogo" src="images/redberry-logo.svg" alt="REDBERRY logo with its animal emblem" />
+      </div>
       <p class="splashTagline">Wedding · Grand Fest · Shoot + Edit</p>
     </div>
   </div>
