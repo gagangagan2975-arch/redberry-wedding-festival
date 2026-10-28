@@ -2,6 +2,104 @@
 function scrollToId(id){ document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); }
 document.querySelectorAll('[data-scroll]').forEach(b => b.addEventListener('click', () => scrollToId(b.dataset.scroll)));
 
+// Branded intro: layered logo depth, a single particle burst, and click-to-skip.
+(function(){
+  const splash = document.querySelector('.splash');
+  if (!splash) return;
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finishSplash = () => {
+    if (splash.classList.contains('fadeOut')) return;
+    splash.classList.add('fadeOut');
+    window.setTimeout(() => splash.remove(), 650);
+  };
+  splash.addEventListener('click', finishSplash);
+  window.setTimeout(finishSplash, reduce ? 500 : 2600);
+
+  splash.querySelectorAll('.splashDepthLayer').forEach((layer, index) => {
+    const depth = Number(layer.dataset.depth) || index;
+    layer.style.transform = `translateY(${depth * 1.5}px) translateZ(${-depth * 5}px)`;
+    layer.style.opacity = String(Math.max(1 - depth * 0.11, 0));
+    layer.style.filter = `blur(${depth * 0.35}px)`;
+    layer.style.zIndex = String(10 - depth);
+  });
+  if (reduce) return;
+
+  const canvas = document.getElementById('splashFx');
+  const ctx = canvas?.getContext('2d', { alpha: true });
+  if (!canvas || !ctx) return;
+
+  let width = 0, height = 0, dpr = 1;
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  const colors = ['#ffffff', '#ffd1d1', '#ff7a7a', '#ff3b3b'];
+  const particles = [];
+  function spawnBurst(x, y, count = 120){
+    for (let i = 0; i < count; i++){
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 2 + Math.random() * 6;
+      particles.push({
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - (1 + Math.random() * 2),
+        radius: 1 + Math.random() * 2.6,
+        life: 40 + Math.random() * 25,
+        age: 0,
+        color: colors[(Math.random() * colors.length) | 0]
+      });
+    }
+  }
+
+  const startTime = performance.now();
+  let burstStarted = false;
+  function frame(now){
+    if (!document.body.contains(splash) || splash.classList.contains('fadeOut')) return;
+    ctx.clearRect(0, 0, width, height);
+    if (!burstStarted && now - startTime > 800){
+      burstStarted = true;
+      spawnBurst(width / 2, height / 2 + 10);
+    }
+
+    for (let i = particles.length - 1; i >= 0; i--){
+      const p = particles[i];
+      p.age++;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.08;
+      p.vx *= 0.99;
+      p.vy *= 0.99;
+      const alpha = Math.max(0, 1 - p.age / p.life);
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fill();
+      if (Math.random() < 0.08){
+        ctx.globalAlpha = alpha * 0.7;
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p.x - p.vx * 2, p.y - p.vy * 2);
+        ctx.stroke();
+      }
+      if (p.age >= p.life) particles.splice(i, 1);
+    }
+    ctx.globalAlpha = 1;
+    if (!burstStarted || particles.length) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
 // Package buttons pre-select the package in the booking form
 const packageSelect = document.getElementById('packageSelect');
 document.querySelectorAll('[data-package]').forEach(b => b.addEventListener('click', () => {
@@ -136,3 +234,4 @@ document.querySelectorAll('.tilt').forEach(el => {
   }
   frame();
 })();
+
